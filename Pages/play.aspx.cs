@@ -49,7 +49,7 @@ public partial class Pages_play : System.Web.UI.Page
         }
         
             // should not get here - has been a problem in debugging only
-            Response.Redirect("default.aspx");
+            Response.Redirect("/default.aspx");
             // MessageBox.Show("should not be in this page at all");
         return null; 
     }
@@ -57,7 +57,7 @@ public partial class Pages_play : System.Web.UI.Page
     protected void logoff_Click(object sender, EventArgs e)
     {
         Session["theUser"] = null;
-        Response.Redirect("Default.aspx");
+        Response.Redirect("/Default.aspx");
     }
 
     int userWonCalc (int A, int B)
@@ -78,11 +78,11 @@ public partial class Pages_play : System.Web.UI.Page
     protected void userSelected (object sender, EventArgs e)
     {
         
-        
+        // user play buttons CommandArgument are numbered 1..6
         int userChoice = Convert.ToInt32(((System.Web.UI.WebControls.ImageButton)sender).CommandArgument);
-        //MessageBox.Show("User selected : " + userChoice);
         resetGame();
-        int computerChoice = (int)Session["computerChoice"];
+        int computerChoice = (int)Session["computerChoice"];  // get the choice made when 'Play' was selected
+        // highlight the player aned computer buttons selected
         ImageButton imgButton = (ImageButton)FindControlRecursive(Table1, "gameChoice_" + userChoice);
         imgButton.CssClass = "buttonBright";
         imgButton = (ImageButton)FindControlRecursive(Table2, "aspChoice_" + computerChoice);
@@ -110,6 +110,8 @@ public partial class Pages_play : System.Web.UI.Page
 
 void updateGameStats(int userWon, int userChoice)
 {
+    // update theUser structure, then save it to database
+
     DataRow theUser = getSessionUserData();
     int i;
     i = (int)theUser["played"] + 1;
@@ -145,9 +147,10 @@ void updateGameStats(int userWon, int userChoice)
 
 protected void updateUserData(DataRow theUser)
 {
+    // Write updated user data to database
+
     SqlCommand comm = new SqlCommand();
     string connectionString = Session["connectionString"].ToString();
-
 
     try
     {
@@ -158,7 +161,6 @@ protected void updateUserData(DataRow theUser)
                 cnn.Open();
                 comm.Connection = cnn;
                 // first make sure username is  unique
-             
                     try
                     {
                         // username is unique, save it

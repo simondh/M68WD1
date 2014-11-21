@@ -10,6 +10,11 @@
 
     <asp:Table ID="Table1" runat="server" CssClass="pickTable">
         <asp:TableRow>
+            <asp:TableCell CssClass="happyBirthday">
+                YOU
+            </asp:TableCell>
+        </asp:TableRow> 
+        <asp:TableRow>
             <asp:TableCell>
                 <asp:ImageButton ID="gameChoice_1" runat="server" onClick="userSelected" 
                     ImageUrl="~/Resources/hand.png" AlternateText="Hand" CssClass="buttonDim" Enabled="False" CommandArgument="1" />
@@ -60,6 +65,11 @@
 
 
      <asp:Table ID="Table2" CssClass="pickTable" runat="server">
+                 <asp:TableRow>
+            <asp:TableCell CssClass="happyBirthday">
+                AUTO
+            </asp:TableCell>
+        </asp:TableRow> 
         <asp:TableRow>
             <asp:TableCell>
                 <asp:ImageButton ID="aspChoice_1" runat="server" ImageUrl="~/Resources/hand.png" CssClass="buttonDim" Enabled="False" />
@@ -106,6 +116,9 @@
                 <asp:TableHeaderCell>Scissors</asp:TableHeaderCell>
                 <asp:TableHeaderCell>Lizard</asp:TableHeaderCell>
                 <asp:TableHeaderCell>Spock</asp:TableHeaderCell>
+                <asp:TableHeaderCell ColumnSpan="2">  
+                    <asp:Button ID="logoff" runat="server" Text="Log Off" BorderStyle="Dotted" OnClick="logoff_Click" CssClass="logoutButton" />  
+                </asp:TableHeaderCell>
             </asp:TableRow>
             <asp:TableRow>
                 <asp:TableCell ID="rt1"></asp:TableCell>
@@ -115,10 +128,9 @@
                 <asp:TableCell ID="rt5"></asp:TableCell>
                 <asp:TableCell ID="rt6"></asp:TableCell>
                 <asp:TableCell ID="rt7"></asp:TableCell>
-
             </asp:TableRow>
         </asp:Table>
-        <br /><asp:Button ID="logoff" runat="server" Text="Log Off" BorderStyle="Dotted" OnClick="logoff_Click" CssClass="loginButton" />
+        
 
     </div>
 

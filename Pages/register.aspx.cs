@@ -22,13 +22,14 @@ public partial class Pages_register : System.Web.UI.Page
 
     protected void registerSaveButton_click(object sender, EventArgs e)
     {
+        // user clicked to register
         SqlCommand comm = new SqlCommand();
         string connectionString = Session["connectionString"].ToString();
         bool allGood = false;
 
         if (!Page.IsValid)
         {
-            return;  // make sure all validation has succeeded.
+            return;  // make sure all validation has succeeded, bomb out if not
         }
 
         try
@@ -37,7 +38,7 @@ public partial class Pages_register : System.Web.UI.Page
             {
                 try
                 {
-                    cnn.Open();
+                    cnn.Open();  // open database
                     comm.Connection = cnn;
                     // first make sure username is  unique
                    
@@ -92,11 +93,35 @@ public partial class Pages_register : System.Web.UI.Page
         }
 
         if (allGood)
-            Response.Redirect("play.aspx");
+        {
+            loadUserIntoSession(userName.Text);
+            Response.Redirect("/Pages/play.aspx"); // all good, go play
+        }
 
     } // registerSaveButton_click
 
 
+
+    protected void cancel_Click(object sender, EventArgs e)
+    {
+        // cancel - go back to default, the login screen
+        Session["theUser"] = null;  // erase current user data in session
+        Response.Redirect("/Default.aspx");
+    }
+
+    protected void valDateRange_ServerValidate(object source, ServerValidateEventArgs args)
+    {
+        // check a valid DOB has been entered and player is over 18
+        DateTime minDate = DateTime.Now.AddYears(-18);
+        DateTime dt;
+        args.IsValid = false;
+        if (DateTime.TryParse(args.Value, out dt))
+        {
+            args.IsValid = (dt <= minDate);
+        }   
+    } // valDateRange_ServerValidate
+
+    
     private void loadUserIntoSession(string newUsername)
     {
         SqlDataReader theUsers;
@@ -132,21 +157,8 @@ public partial class Pages_register : System.Web.UI.Page
         }
      
     } // loadUserIntoSession
+    
 
-    protected void cancel_Click(object sender, EventArgs e)
-    {
-        Session["theUser"] = null;
-        Response.Redirect("Default.aspx");
-    }
 
-    protected void valDateRange_ServerValidate(object source, ServerValidateEventArgs args)
-    {
-        DateTime minDate = DateTime.Now.AddYears(-18);
-        DateTime dt;
-        args.IsValid = false;
-        if (DateTime.TryParse(args.Value, out dt))
-        {
-            args.IsValid = (dt <= minDate);
-        }   
-    } // valDateRange_ServerValidate
+
 }
