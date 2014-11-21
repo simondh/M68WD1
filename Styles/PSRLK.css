@@ -1,0 +1,147 @@
+﻿* {
+    font-family: "nunito book", "nunito", "lucinda sans unicode", "sans serif";
+}
+
+header
+{
+    background-color: #c0c0c0;
+    width: 844px;
+    height: 86px;
+}
+
+H1{
+    clear: both;
+    border: 1px groove #aaaaaa;
+    background: blue;
+    color: White;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+    line-height: normal;
+    margin: 0;
+
+    width: 100%;
+
+}
+
+
+.LoginPanel
+{
+    width: 420px;
+    height: 150px;
+    border:outset;
+    border-width: 5px;
+    margin: 10px;
+}
+
+.loginButton {
+    display: inline-block;
+    height: 20px;
+    float: left;
+    clear: left;
+    text-align: center;
+    margin: 3px auto;
+}
+
+.loginLabel {
+    display: inline-block;
+    height: 25px;
+    float: left;
+    clear: left;
+    width: 100px;
+    text-align: right;
+    margin: 3px;
+}
+
+.loginInput {
+  display: inline-block;
+  float: left;
+  margin: 3px;
+
+}
+
+.pickTable {
+    border: 1px solid black;
+    float:left;
+    width:78px;
+}
+
+.buttonDim
+{
+   opacity:0.4; 
+   filter:alpha(opacity=40);
+   width: 74px;
+   height: 74px;
+   border: 2px dashed red;
+}
+.buttonBright
+{
+   opacity:1; 
+   filter:alpha(opacity=100);
+   width: 74px;
+   height: 74px;
+   border: 2px dashed red;
+}
+
+.countdownClass
+{
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
+ #table_container{
+     width:840px;
+     margin:0 auto;
+
+ }
+#footer
+{
+    clear: both;
+    border: 1px groove #aaaaaa;
+    background: blue;
+    color: White;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+    line-height: normal;
+    margin: 0;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+
+}
+
+.resultsTable
+{
+    clear:both;
+    border: 1px groove #aaaaaa;
+    background: blue;
+    color: White;
+    padding: 2px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: normal;
+    margin: 3px;
+
+}
+
+.happyBirthday
+{
+    border: 1px groove #aaaaaa;
+    background: blue;
+    color: White;
+    padding: 2px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: normal;
+    margin: 3px;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.instructions
+{
+    float:left;
+
+}
